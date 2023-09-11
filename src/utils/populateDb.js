@@ -7,18 +7,22 @@ const logger = require('../config/logger');
 const Sheetdefinition = require('../models/sheetdefinition.model');
 
 async function globby() {
-  const files = await glob('**/*', { cwd: 'assets/spritesheets' });
+  const files = await glob('**/*', { cwd: 'assets/spritesheets', ignore: 'node_modules' });
   let renamed = [];
   renamed = files.map((f) => f.replaceAll('/', '_'));
+  renamed.forEach((f) => logger.info(f));
   return renamed;
 }
 
-async function checkAndPopulateCollection() {
-  Sheetdefinition.createCollection();
-  Sheetdefinition.collection.drop();
+globby();
 
+async function checkAndPopulateCollection() {
+  if (Sheetdefinition.collection.length > 0) {
+    Sheetdefinition.collection.drop();
+  }
   try {
     // Define your default JSON data
+
     const sheetDefinitionDirectory = path.join(__dirname, '../../assets/sheet_definitions');
     const files = fs.readdirSync(sheetDefinitionDirectory);
     const renamed = await globby();
