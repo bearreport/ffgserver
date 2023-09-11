@@ -20,6 +20,7 @@ const SheetdefinitionSchema = mongoose.Schema({
   variants: [String],
   match_body_color: Boolean,
   filename: String,
+  filepath: String,
   layer_1: LayerSchema,
   layer_2: LayerSchema,
   layer_3: LayerSchema,

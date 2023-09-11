@@ -1,14 +1,17 @@
 {
-  "name": "create-nodejs-express-app",
-  "version": "1.7.0",
-  "description": "Create a Node.js app for building production-ready RESTful APIs using Express, by running one command",
+  "name": "ffgserver",
+  "version": "1.0",
+  "description": "serves LPC assets and fun",
   "bin": "bin/createNodejsApp.js",
   "main": "src/index.js",
-  "repository": "https://github.com/hagopj13/node-express-boilerplate.git",
-  "author": "Hagop Jamkojian <hagopj13@gmail.com>",
+  "repository": "https://github.com/bearreport/ffgserver.git",
+  "author": "Josh Bayer <bayerj@gmail.com>",
   "license": "MIT",
   "engines": {
     "node": ">=12.0.0"
+  },
+  "node": {
+    "enableDebugging": true
   },
   "scripts": {
     "start": "pm2 start ecosystem.config.json --no-daemon",
@@ -57,6 +60,7 @@
     "express": "^4.17.1",
     "express-mongo-sanitize": "^2.0.0",
     "express-rate-limit": "^5.0.0",
+    "glob": "^10.3.4",
     "helmet": "^4.1.0",
     "http-status": "^1.4.0",
     "joi": "^17.3.0",
